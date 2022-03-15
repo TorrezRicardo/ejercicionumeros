@@ -1,10 +1,28 @@
 <div class="container-fluid">
   <div class="jumbotron text-center">
     <h1>
-      <img class="logo" src="assets/ngx-rocket-logo.png" alt="angular logo"/>
+      <img class="logo" src="assets/ngx-rocket-logo.png" alt="angular logo" />
       <span translate>Hello world !</span>
     </h1>
-    <app-loader [isLoading]="isLoading"></app-loader>
-    <q [hidden]="isLoading">{{quote}}</q>
   </div>
+</div>
+
+<div class="jumbotron text-center">
+  <h3>Div para el ejercicio de numeross</h3>
+  <input type="number" placeholder="valor a buscar" id="val1" [(ngModel)]="val1" />
+
+  <button class="btn btn-primary" (click)="operacion()">Enviar</button>
+
+  <table>
+    Los multiplos de
+    {{
+      val1
+    }}
+    son
+    <tr *ngFor="let item of myArray">
+      <td [ngStyle]="{ color: retornarColor() }">
+        {{ item }}
+      </td>
+    </tr>
+  </table>
 </div>

@@ -6,20 +6,64 @@ import { QuoteService } from './quote.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-
   quote: string | undefined;
   isLoading = false;
 
-  constructor(private quoteService: QuoteService) { }
+  constructor(private quoteService: QuoteService) {}
 
   ngOnInit() {
     this.isLoading = true;
-    this.quoteService.getRandomQuote({ category: 'dev' })
-      .pipe(finalize(() => { this.isLoading = false; }))
-      .subscribe((quote: string) => { this.quote = quote; });
+    this.quoteService
+      .getRandomQuote({ category: 'dev' })
+      .pipe(
+        finalize(() => {
+          this.isLoading = false;
+        })
+      )
+      .subscribe((quote: string) => {
+        this.quote = quote;
+      });
   }
 
+  val1!: number;
+  condicion!: number;
+  //myArray!: string [] ;
+  myArray: number[] = [];
+
+  operacion() {
+    this.myArray = [];
+    for (this.condicion = 3; this.condicion <= 7; this.condicion = this.condicion + 2) {
+      console.log('entro al for' + this.condicion);
+      if (this.val1 % this.condicion == 0) {
+        console.log(this.condicion);
+        //this.myArray.push(this.condicion);
+        this.myArray.push(this.condicion);
+      }
+    }
+    console.log(this.myArray);
+    //this.rta = "el resultado es" + this.val1.toString() ;
+  }
+
+  /*retornarColor(){
+    if(this.myArray[0] == 3){
+      return '#FF0000';
+    } else if (this.myArray[0] ==5){
+      return '#FFFF00';
+    } else {
+      return '#4F40EB';
+    }
+  }*/
+
+  retornarColor() {
+    if (this.myArray[0] == 3) {
+      return ' #00FF00';
+    } else if (this.myArray[0] == 5) {
+      return '#FF0000';
+    } else {
+      return '#0000FF';
+    }
+  }
 }

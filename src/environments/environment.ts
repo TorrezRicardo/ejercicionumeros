@@ -9,13 +9,24 @@
 // Note that as usual, any environment variables you expose through it will end up in your
 // bundle, and you should not use it for any sensitive information like passwords or keys.
 import { env } from './.env';
+import { initializeApp } from 'firebase/app';
+import { getAnalytics } from 'firebase/analytics';
 
 export const environment = {
   production: false,
   version: env['npm_package_version'] + '-dev',
   serverUrl: '/api',
   defaultLanguage: 'en-US',
-  supportedLanguages: ['en-US', 'fr-FR']
+  supportedLanguages: ['en-US', 'fr-FR'],
+  /*firebaseConfig: {
+    apiKey: 'AIzaSyAuAs1YVa_pI-lry0IesdDBzRPLN9Folnc',
+    authDomain: 'multiplos-3fc6a.firebaseapp.com',
+    projectId: 'multiplos-3fc6a',
+    storageBucket: 'multiplos-3fc6a.appspot.com',
+    messagingSenderId: '1016027201049',
+    appId: '1:1016027201049:web:59f6227c14c0b21985b488',
+    measurementId: 'G-LSJ8JP0Y6P',
+  },*/
 };
 
 /*
