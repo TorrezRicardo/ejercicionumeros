@@ -7,6 +7,14 @@
 import { env } from './.env';
 
 export const environment = {
+  firebase: {
+    projectId: 'ejemplonumeros-968be',
+    appId: '1:926947830123:web:f97d794dff4b2f2c8e442e',
+    storageBucket: 'ejemplonumeros-968be.appspot.com',
+    apiKey: 'AIzaSyBsUZdk4q9wJhYRoIS9goFNRFoJrmrX6DI',
+    authDomain: 'ejemplonumeros-968be.firebaseapp.com',
+    messagingSenderId: '926947830123',
+  },
   production: true,
   version: env['npm_package_version'],
   serverUrl: 'https://api.chucknorris.io',

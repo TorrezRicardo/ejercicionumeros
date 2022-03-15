@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Numeros } from '@app/models/Numeros';
+import { NumerosService } from '@app/services/numeros.service';
+//import { error } from 'console';
 import { finalize } from 'rxjs/operators';
 
 import { QuoteService } from './quote.service';
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -12,7 +14,8 @@ export class HomeComponent implements OnInit {
   quote: string | undefined;
   isLoading = false;
 
-  constructor(private quoteService: QuoteService) {}
+  constructor(private quoteService: QuoteService,
+              private _numerosService: NumerosService) {}
 
   ngOnInit() {
     this.isLoading = true;
@@ -34,6 +37,7 @@ export class HomeComponent implements OnInit {
   myArray: number[] = [];
 
   operacion() {
+    
     this.myArray = [];
     for (this.condicion = 3; this.condicion <= 7; this.condicion = this.condicion + 2) {
       console.log('entro al for' + this.condicion);
@@ -41,8 +45,23 @@ export class HomeComponent implements OnInit {
         console.log(this.condicion);
         //this.myArray.push(this.condicion);
         this.myArray.push(this.condicion);
+
+        const NUMEROS: Numeros ={
+          numeroBuscado: this.val1,
+          multiploNumero: this.condicion,
+        }
+
+        console.log(NUMEROS);
+
+        this._numerosService.guardarNumeros(NUMEROS).then(() => { 
+          console.log('numero guardado')
+        }), (error: any) => {
+          console.log(error);
+        }
       }
     }
+
+   
     console.log(this.myArray);
     //this.rta = "el resultado es" + this.val1.toString() ;
   }
